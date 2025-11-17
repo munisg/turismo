@@ -81,11 +81,58 @@
             text-shadow: 0 0 3px rgba(0,0,0,0.8); /* ligera sombra para legibilidad */
             pointer-events: none;  /* evita que bloquee clics */
         }
+        /* CONTENEDOR SUPERIOR */
+        .header-superior {
+            position: fixed;
+            top: 10px;
+            left: 50%;
+            transform: translateX(-50%);
+            
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        
+            background: rgba(0,0,0,0.45);  /* caja semi-transparente elegante */
+            padding: 10px 18px;
+            border-radius: 12px;
+            backdrop-filter: blur(3px);
+        
+            z-index: 9999;    /* siempre adelante */
+        }
+        
+        /* TEXTO DEL SEUDÓNIMO */
+        .titulo-superior {
+            font-size: 18px;
+            color: #ffffff;
+            font-weight: 600;
+            text-align: center;
+            letter-spacing: 1px;
+        
+            /* brillo dorado suave */
+            text-shadow:
+                0 0 4px #ffd700,
+                0 0 7px #ffd700;
+        }
+        
+        /* LOGO */
+        .logo-superior {
+            height: 40px;          /* puedes ajustar tamaño */
+            width: auto;
+            filter: drop-shadow(0 0 4px rgba(0,0,0,0.7)); /* borde elegante */
+        }
+
 
     </style>
 </head>
 <body>
+<div class="header-superior">
+    <div class="titulo-superior">
+        San Gabán – Paraíso de la Selva Puneña
+    </div>
 
+    <!-- LOGO A LA DERECHA (sube tu logo como logo.png) -->
+    <img src="logo.png" class="logo-superior" alt="Logo Municipalidad">
+</div>
 <h1>Quebrada Honda</h1>
 <h2>C.P. Lechemayo</h2>
 <!-- 🔵 BOTÓN QUE REDIRIGE A UN SITIO WEB -->
@@ -93,10 +140,14 @@
      Información del Lugar
     </a>
     <a href="video.html">Ver Video</a>
-<div class="creditos">Oficina de Tecnologías de la Información</div>
+<div class="creditos">
+    Oficina de Tecnologías de la Información
+    Municipalidad Distrital de San Gabán
+</div>
 
 </body>
 </html>
+
 
 
 
