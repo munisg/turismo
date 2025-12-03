@@ -1,1 +1,19 @@
-
+[
+  {
+    "id": 1,
+    "nombre": "Sitio Turístico La Granja",
+    "info_url": "https://www.pagina-oficial-granja.com",
+    "video_url": "https://www.tiktok.com/@munisg/video_granja",
+    "lat": -13.12345,
+    "lon": -70.98765
+  },
+  {
+    "id": 2,
+    "nombre": "Sitio Turístico El Mirador",
+    "info_url": "https://www.pagina-oficial-mirador.com",
+    "video_url": "https://www.tiktok.com/@munisg/video_mirador",
+    "lat": -13.56789,
+    "lon": -70.43210
+  }
+  // Añada aquí todos sus sitios turísticos
+]
