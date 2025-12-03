@@ -9,7 +9,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // Función para cargar los datos de los sitios turísticos (Async)
     async function cargarSitios() {
         try {
-            const response = await fetch('sitios.json');
+            const response = await fetch('js/sitios.json');
             sitiosData = await response.json();
         } catch (error) {
             console.error('Error al cargar sitios.json:', error);
