@@ -26,12 +26,12 @@ document.addEventListener('DOMContentLoaded', () => {
         const btnInfo = `<a href="${sitio.info_url}" target="_blank" class="btn btn-info">Información</a>`;
 
         // 2. Botón de Video (TikTok)
-        const btnVideo = `<a href="${sitio.video_url}" target="_blank" class="btn btn-video">Video (TikTok)</a>`;
+        const btnVideo = `<a href="${sitio.video_url}" target="_blank" class="btn btn-video">Video</a>`;
         
         // 3. Botón de Ruta (Google Maps, usando la ubicación del usuario)
         // NOTA: Revisé la URL de Google Maps y la simplifiqué para la navegación con destino:
         const googleMapsUrl = `https://www.google.com/maps/dir/?api=1&destination=${sitio.lat},${sitio.lon}`;
-        const btnRuta = `<a href="${googleMapsUrl}" target="_blank" class="btn btn-ruta">Ruta (Google Maps)</a>`;
+        const btnRuta = `<a href="${googleMapsUrl}" target="_blank" class="btn btn-ruta">Cómo llegar</a>`;
 
         // Insertar los botones en el modal
         modalContent.innerHTML = btnInfo + btnVideo + btnRuta;
