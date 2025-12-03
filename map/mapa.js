@@ -6,13 +6,15 @@ document.addEventListener('DOMContentLoaded', () => {
     const cerrarBtn = modal.querySelector('.cerrar-modal');
     let sitiosData = [];
 
-    // Función para cargar los datos de los sitios turísticos
+    // Función para cargar los datos de los sitios turísticos (Async)
     async function cargarSitios() {
         try {
             const response = await fetch('sitios.json');
             sitiosData = await response.json();
         } catch (error) {
             console.error('Error al cargar sitios.json:', error);
+            // IMPORTANTE: Si hay un error, el script no podrá funcionar.
+            alert('Error: No se pudieron cargar los datos turísticos.');
         }
     }
 
@@ -27,7 +29,8 @@ document.addEventListener('DOMContentLoaded', () => {
         const btnVideo = `<a href="${sitio.video_url}" target="_blank" class="btn btn-video">Video (TikTok)</a>`;
         
         // 3. Botón de Ruta (Google Maps, usando la ubicación del usuario)
-        const googleMapsUrl = `http://googleusercontent.com/maps.google.com/3${sitio.lat},${sitio.lon}&travelmode=driving`;
+        // NOTA: Revisé la URL de Google Maps y la simplifiqué para la navegación con destino:
+        const googleMapsUrl = `https://www.google.com/maps/dir/?api=1&destination=${sitio.lat},${sitio.lon}`;
         const btnRuta = `<a href="${googleMapsUrl}" target="_blank" class="btn btn-ruta">Ruta (Google Maps)</a>`;
 
         // Insertar los botones en el modal
@@ -37,32 +40,38 @@ document.addEventListener('DOMContentLoaded', () => {
         modal.style.display = 'flex';
     }
 
-    // 4. Lógica principal: Escuchar los clics en las áreas sensibles
-    areas.forEach(area => {
-        area.addEventListener('click', (e) => {
-            e.preventDefault(); // Evita que el navegador intente seguir el '#'
+    // Función principal asíncrona
+    async function main() {
+        // 1. ESPERAR A QUE LOS DATOS SE CARGUEN COMPLETAMENTE
+        await cargarSitios(); 
 
-            const sitioId = parseInt(area.dataset.sitioId);
-            const sitioEncontrado = sitiosData.find(s => s.id === sitioId);
-
-            if (sitioEncontrado) {
-                mostrarModal(sitioEncontrado);
+        // 2. Lógica para cerrar el modal (puede ir antes de la carga, pero la ponemos aquí por orden)
+        cerrarBtn.addEventListener('click', () => {
+            modal.style.display = 'none';
+        });
+        
+        // Cierra el modal si se hace clic fuera de su contenido
+        window.addEventListener('click', (e) => {
+            if (e.target === modal) {
+                modal.style.display = 'none';
             }
         });
-    });
+        
+        // 3. INICIAR LA ESCUCHA DE CLICS SOLO DESPUÉS DE QUE LOS DATOS ESTÉN LISTOS
+        areas.forEach(area => {
+            area.addEventListener('click', (e) => {
+                e.preventDefault(); // Evita que el navegador intente seguir el '#'
 
-    // 5. Lógica para cerrar el modal
-    cerrarBtn.addEventListener('click', () => {
-        modal.style.display = 'none';
-    });
+                const sitioId = parseInt(area.dataset.sitioId);
+                const sitioEncontrado = sitiosData.find(s => s.id === sitioId);
 
-    // Cierra el modal si se hace clic fuera de su contenido
-    window.addEventListener('click', (e) => {
-        if (e.target === modal) {
-            modal.style.display = 'none';
-        }
-    });
+                if (sitioEncontrado) {
+                    mostrarModal(sitioEncontrado);
+                }
+            });
+        });
+    }
 
-    // Iniciar la carga de datos al cargar la página
-    cargarSitios();
+    // Ejecutar la función principal
+    main();
 });
