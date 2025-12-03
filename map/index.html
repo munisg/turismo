@@ -1,45 +1,33 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Mapa Turístico - San Gabán</title>
-
-  <!-- Leaflet CSS -->
-  <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
-  <link rel="stylesheet" href="mapa.css" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mapa Turístico de San Gabán</title>
+    <link rel="stylesheet" href="mapa.css">
 </head>
 <body>
-  <header id="topbar">
-    <div class="title">Mapa Turístico — San Gabán</div>
-    <div class="controls">
-      <button id="btnTuristico" class="active">Mapa Turístico</button>
-      <button id="btnReal">Mapa Real</button>
+
+    <div class="mapa-container">
+        <img src="img/mapa_ilustrativo.jpg" usemap="#mapa_interactivo" alt="Mapa Ilustrativo de San Gabán">
+
+        <map name="mapa_interactivo">
+            <area shape="rect" coords="100, 50, 250, 150" href="#" data-sitio-id="1" alt="La Granja">
+            
+            <area shape="circle" coords="400, 300, 75" href="#" data-sitio-id="2" alt="El Mirador">
+            
+            </map>
     </div>
-  </header>
 
-  <div id="map"></div>
-
-  <!-- Modal -->
-  <div id="modal" class="hidden">
-    <div id="modalContent">
-      <div id="modalHeader">
-        <h2 id="mTitle"></h2>
-        <button id="closeModal" title="Cerrar">✕</button>
-      </div>
-      <img id="mThumb" src="" alt="" />
-      <p id="mDesc"></p>
-
-      <div class="modalBtns">
-        <button id="infoBtn">Información</button>
-        <button id="videoBtn">Video</button>
-        <button id="routeBtn">Ruta</button>
-      </div>
+    <div id="modal-opciones" class="modal">
+        <div class="modal-content">
+            <span class="cerrar-modal">&times;</span>
+            <h2 id="modal-titulo"></h2>
+            <div class="botones-opciones">
+                </div>
+        </div>
     </div>
-  </div>
 
-  <!-- Leaflet JS -->
-  <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
-  <script src="mapa.js"></script>
+    <script src="mapa.js"></script>
 </body>
 </html>
