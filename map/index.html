@@ -1,27 +1,45 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <title>En Desarrollo</title>
-    <style>
-        body {
-            background: #f5f5f5;
-            font-family: Arial, sans-serif;
-            text-align: center;
-            padding-top: 80px;
-        }
-        h1 {
-            color: #444;
-            font-size: 32px;
-        }
-        p {
-            color: #777;
-            font-size: 18px;
-        }
-    </style>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Mapa Turístico - San Gabán</title>
+
+  <!-- Leaflet CSS -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+  <link rel="stylesheet" href="mapa.css" />
 </head>
 <body>
-    <h1>🌐 Sitio en Desarrollo</h1>
-    <p>Estamos trabajando en esta funcionalidad.<br>Vuelve pronto.</p>
+  <header id="topbar">
+    <div class="title">Mapa Turístico — San Gabán</div>
+    <div class="controls">
+      <button id="btnTuristico" class="active">Mapa Turístico</button>
+      <button id="btnReal">Mapa Real</button>
+    </div>
+  </header>
+
+  <div id="map"></div>
+
+  <!-- Modal -->
+  <div id="modal" class="hidden">
+    <div id="modalContent">
+      <div id="modalHeader">
+        <h2 id="mTitle"></h2>
+        <button id="closeModal" title="Cerrar">✕</button>
+      </div>
+      <img id="mThumb" src="" alt="" />
+      <p id="mDesc"></p>
+
+      <div class="modalBtns">
+        <button id="infoBtn">Información</button>
+        <button id="videoBtn">Video</button>
+        <button id="routeBtn">Ruta</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Leaflet JS -->
+  <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+  <script src="mapa.js"></script>
 </body>
 </html>
