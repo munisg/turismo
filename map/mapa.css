@@ -1,43 +1,72 @@
-/* mapa.css - estilos básicos */
-:root {
-  --accent: #0b76ef;
-  --bg: #f7f7f7;
+/* Estilos para que la imagen sea responsiva y el modal esté centrado */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    background-color: #f4f4f4;
 }
-html,body { height:100%; margin:0; padding:0; font-family: Arial, sans-serif; background:var(--bg); }
-#topbar {
-  position: absolute; z-index:1200; left:12px; top:12px;
-  display:flex; gap:12px; align-items:center;
-  background: rgba(255,255,255,0.95); padding:8px 10px; border-radius:10px;
-  box-shadow: 0 6px 14px rgba(0,0,0,0.14);
-}
-#topbar .title { font-weight:700; color:#333; margin-right:12px; }
-#topbar .controls button {
-  border: none; padding:8px 12px; border-radius:8px; cursor:pointer; background:#eee;
-}
-#topbar .controls button.active { background: var(--accent); color:#fff; }
 
-#map { height:100vh; width:100vw; }
+.mapa-container {
+    max-width: 1000px; /* Ajuste al tamaño máximo de su mapa */
+    margin: 20px auto;
+    position: relative;
+}
 
-/* Modal */
-#modal.hidden { display:none; }
-#modal {
-  position: fixed; inset:0; display:flex; justify-content:center; align-items:center;
-  background: rgba(0,0,0,0.45); z-index:2000;
+.mapa-container img {
+    max-width: 100%;
+    height: auto;
+    display: block;
 }
-#modalContent {
-  width: 92%; max-width:420px; background: #fff; border-radius:10px; padding:14px;
-  box-shadow: 0 12px 30px rgba(0,0,0,0.25);
-}
-#modalHeader { display:flex; justify-content:space-between; align-items:center; margin-bottom:8px; }
-#modalHeader h2 { margin:0; font-size:18px; color:#111; }
-#closeModal { border:none; background:transparent; font-size:18px; cursor:pointer; }
-#modalContent img { width:100%; border-radius:8px; margin:8px 0; object-fit:cover; max-height:200px; }
-#modalContent p { color:#444; font-size:14px; margin:8px 0 12px; line-height:1.4; }
 
-.modalBtns { display:flex; gap:8px; justify-content:space-between; }
-.modalBtns button {
-  flex:1; padding:10px; border-radius:8px; border:none; cursor:pointer;
-  background: var(--accent); color:#fff; font-weight:600;
+/* --- Estilos del Modal (Subventana) --- */
+.modal {
+    display: none; /* Oculto por defecto */
+    position: fixed; 
+    z-index: 10; 
+    left: 0;
+    top: 0;
+    width: 100%; 
+    height: 100%; 
+    overflow: auto; 
+    background-color: rgba(0,0,0,0.4); /* Fondo semi-transparente */
+    justify-content: center; /* Centrar horizontalmente */
+    align-items: center; /* Centrar verticalmente */
 }
-.modalBtns button:nth-child(2) { background:#111; } /* video button darker */
-.modalBtns button:nth-child(3) { background:#2a9d8f; } /* route button */
+
+.modal-content {
+    background-color: #fff;
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+    width: 90%; 
+    max-width: 400px;
+    text-align: center;
+}
+
+.cerrar-modal {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.cerrar-modal:hover,
+.cerrar-modal:focus {
+    color: #000;
+    text-decoration: none;
+}
+
+.botones-opciones a {
+    display: block;
+    margin: 10px 0;
+    padding: 10px;
+    text-decoration: none;
+    color: white;
+    border-radius: 5px;
+    font-weight: bold;
+}
+
+/* Estilos de botones */
+.btn-info { background-color: #007bff; }
+.btn-video { background-color: #ff0050; } /* Color de TikTok */
+.btn-ruta { background-color: #4285F4; } /* Color de Google */
