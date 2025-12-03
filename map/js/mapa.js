@@ -70,6 +70,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 }
             });
         });
+        imageMapResize();
     }
 
     // Ejecutar la función principal
