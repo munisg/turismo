@@ -1,0 +1,43 @@
+/* mapa.css - estilos básicos */
+:root {
+  --accent: #0b76ef;
+  --bg: #f7f7f7;
+}
+html,body { height:100%; margin:0; padding:0; font-family: Arial, sans-serif; background:var(--bg); }
+#topbar {
+  position: absolute; z-index:1200; left:12px; top:12px;
+  display:flex; gap:12px; align-items:center;
+  background: rgba(255,255,255,0.95); padding:8px 10px; border-radius:10px;
+  box-shadow: 0 6px 14px rgba(0,0,0,0.14);
+}
+#topbar .title { font-weight:700; color:#333; margin-right:12px; }
+#topbar .controls button {
+  border: none; padding:8px 12px; border-radius:8px; cursor:pointer; background:#eee;
+}
+#topbar .controls button.active { background: var(--accent); color:#fff; }
+
+#map { height:100vh; width:100vw; }
+
+/* Modal */
+#modal.hidden { display:none; }
+#modal {
+  position: fixed; inset:0; display:flex; justify-content:center; align-items:center;
+  background: rgba(0,0,0,0.45); z-index:2000;
+}
+#modalContent {
+  width: 92%; max-width:420px; background: #fff; border-radius:10px; padding:14px;
+  box-shadow: 0 12px 30px rgba(0,0,0,0.25);
+}
+#modalHeader { display:flex; justify-content:space-between; align-items:center; margin-bottom:8px; }
+#modalHeader h2 { margin:0; font-size:18px; color:#111; }
+#closeModal { border:none; background:transparent; font-size:18px; cursor:pointer; }
+#modalContent img { width:100%; border-radius:8px; margin:8px 0; object-fit:cover; max-height:200px; }
+#modalContent p { color:#444; font-size:14px; margin:8px 0 12px; line-height:1.4; }
+
+.modalBtns { display:flex; gap:8px; justify-content:space-between; }
+.modalBtns button {
+  flex:1; padding:10px; border-radius:8px; border:none; cursor:pointer;
+  background: var(--accent); color:#fff; font-weight:600;
+}
+.modalBtns button:nth-child(2) { background:#111; } /* video button darker */
+.modalBtns button:nth-child(3) { background:#2a9d8f; } /* route button */
