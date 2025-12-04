@@ -9,9 +9,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // --- 2. CONSTANTES DE VIDEO Y AUDIO ---
     const bienvenidaDiv = document.getElementById('bienvenida-video');
-    const videoIntro = document.getElementById('video');
+    const videoIntro = document.getElementById('video-intro');
     const btnActivarSonido = document.getElementById('btn-activar-sonido');
-    const musicaFondo = document.getElementById('intro');
+    const musicaFondo = document.getElementById('musica-fondo');
 
     // Función para cargar los datos de los sitios turísticos (Async)
     async function cargarSitios() {
