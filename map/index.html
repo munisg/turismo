@@ -7,7 +7,13 @@
     <link rel="stylesheet" href="mapa.css">
 </head>
 <body>
-
+    <div id="bienvenida-video">
+        <video id="video-intro" src="video/intro.mp4" autoplay muted playsinline></video>
+        
+        <button id="btn-activar-sonido" style="display:none;">
+            
+        </button>
+    </div>
     <div class="mapa-container">
         <img src="img/mapa_ilustrativo.jpg" usemap="#mapa_interactivo" alt="Mapa Ilustrativo de San Gabán">
 
@@ -31,8 +37,8 @@
                 </div>
         </div>
     </div>
-
-<script src="https://cdnjs.cloudflare.com/ajax/libs/image-map-resizer/1.0.10/js/imageMapResizer.min.js"></script>
+    <audio id="musica-fondo" src="audio/intro.mp3" loop muted></audio>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/image-map-resizer/1.0.10/js/imageMapResizer.min.js"></script>
     <script src="js/mapa.js"></script>
 </body>
 </html>
