@@ -6,6 +6,13 @@ document.addEventListener('DOMContentLoaded', () => {
     const cerrarBtn = modal.querySelector('.cerrar-modal');
     let sitiosData = [];
 
+
+    // --- 2. CONSTANTES DE VIDEO Y AUDIO ---
+    const bienvenidaDiv = document.getElementById('bienvenida-video');
+    const videoIntro = document.getElementById('video');
+    const btnActivarSonido = document.getElementById('btn-activar-sonido');
+    const musicaFondo = document.getElementById('intro');
+
     // Función para cargar los datos de los sitios turísticos (Async)
     async function cargarSitios() {
         try {
@@ -40,10 +47,64 @@ document.addEventListener('DOMContentLoaded', () => {
         modal.style.display = 'flex';
     }
 
+    // --- 4. FUNCIONES DE CONTROL DE VIDEO/AUDIO ---
+
+    // Función que se llama al terminar el video o al ser omitido
+    function finalizarVideo() {
+        // La música ya está tocando (silenciada o no), solo la dejamos en bucle.
+        bienvenidaDiv.classList.add('oculto');
+        
+        // Remover el elemento después de la transición (1 segundo)
+        setTimeout(() => {
+            bienvenidaDiv.remove();
+        }, 1000);
+    }
+
+    // Función que se llama con el Clic del Turista (Desbloquea el sonido ambiental)
+    function manejarAudio() {
+        // Activa el sonido del audio ambiental
+        musicaFondo.muted = false; 
+        
+        // Intenta forzar la reproducción (si el navegador no lo hizo automáticamente)
+        musicaFondo.play().catch(error => {
+            console.warn('Reproducción de música bloqueada en el primer intento.');
+        });
+        
+        // Oculta el botón y elimina el listener (solo se necesita un clic)
+        btnActivarSonido.style.display = 'none';
+        btnActivarSonido.removeEventListener('click', manejarAudio);
+    }
+
     // Función principal asíncrona
     async function main() {
         // 1. ESPERAR A QUE LOS DATOS SE CARGUEN COMPLETAMENTE
         await cargarSitios(); 
+
+
+        // 2. CONFIGURACIÓN DE LA SECUENCIA DE BIENVENIDA
+        
+        // A. Asignar el evento de un solo clic para el desbloqueo de audio
+        btnActivarSonido.addEventListener('click', manejarAudio);
+        
+        // B. Iniciar la reproducción silenciosa de la música de fondo
+        musicaFondo.play().catch(error => {
+            console.warn('Música de fondo no pudo iniciar automáticamente (silencio).');
+        });
+
+        // C. Escuchar cuando el video de intro termina para ocultarlo
+        videoIntro.addEventListener('ended', finalizarVideo);
+
+        // D. Mostrar el botón cuando el video inicie (interacción necesaria)
+        videoIntro.addEventListener('play', () => {
+            btnActivarSonido.style.display = 'block'; 
+        });
+
+        // E. Iniciar la reproducción del video (silencioso por defecto)
+        videoIntro.play().catch(error => {
+            // Si hay error (bloqueo), omitimos el video inmediatamente para mostrar el mapa
+            console.warn('Autoplay del video bloqueado. Omitiendo intro.');
+            finalizarVideo();
+        });
 
         // 2. Lógica para cerrar el modal (puede ir antes de la carga, pero la ponemos aquí por orden)
         cerrarBtn.addEventListener('click', () => {
