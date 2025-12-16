@@ -71,5 +71,13 @@
     "lat": -13.56789,
     "lon": -70.43210
   }
-  
+
+  {
+    "id": 10,
+    "nombre": "Templo de Icaco",
+    "info_url": "https://consultasenlinea.mincetur.gob.pe/fichaInventario/index.aspx?cod_Ficha=13471",
+    "video_url": "https://www.tiktok.com/@anthonyhuanca07/video/7488940089402297605?is_from_webapp=1&sender_device=pc",
+    "lat": -13.7232089,
+    "lon": -70.324764
+  }
 ]
