@@ -1,3 +1,9 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
 /* Estilos para que la imagen sea responsiva y el modal esté centrado */
 body {
     font-family: Arial, sans-serif;
@@ -6,13 +12,14 @@ body {
 }
 
 .mapa-container {
-    max-width: 1000px; /* Ajuste al tamaño máximo de su mapa */
-    margin: 20px auto;
+    width: 100vw; /* Ocupa el 100% del ancho de la pantalla */
+    margin: 0;    /* Quitamos el margen de 20px auto que tenías */
     position: relative;
+    line-height: 0; /* Elimina espacio blanco debajo de la imagen */
 }
-
 .mapa-container img {
     max-width: 100%;
+    max-width: none;
     height: auto;
     display: block;
 }
