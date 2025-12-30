@@ -9,19 +9,20 @@ body {
     font-family: Arial, sans-serif;
     margin: 0;
     background-color: #f4f4f4;
+    overflow: auto;
 }
 
 .mapa-container {
     position: relative;
     width: 100vw; /* Ocupa el 100% del ancho de la pantalla */
-    height: 100vh;
+    /*height: 100vh;*/
     top: 0;
     left: 0;/* Quitamos el margen de 20px auto que tenías */
     border: none;
 }
 .mapa-container img {
     width: 100vw;
-    height: 100vh;
+    height: auto;
     object-fit: fill;
     margin: 0;
     padding: 0;
