@@ -25,20 +25,35 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-    // Función que genera el contenido del modal y lo muestra
+// Función que genera el contenido del modal y lo muestra
     function mostrarModal(sitio) {
         modalTitulo.textContent = sitio.nombre;
         
-        // 1. Botón de Información (URL externa)
-        const btnInfo = `<a href="${sitio.info_url}" target="_blank" class="btn btn-info">Información</a>`;
-
-        // 2. Botón de Video (TikTok)
-        const btnVideo = `<a href="${sitio.video_url}" target="_blank" class="btn btn-video">Video</a>`;
+        // 1. REFERENCIA AL CONTENEDOR MULTIMEDIA (El rectángulo verde/negro)
+        const modalMedia = document.getElementById('modal-media');
         
-        // 3. Botón de Ruta (Google Maps, usando la ubicación del usuario)
-        // NOTA: Revisé la URL de Google Maps y la simplifiqué para la navegación con destino:
+        // Verificamos si el archivo es un video o una imagen para mostrar el elemento correcto
+        // Asegúrate de que en tu sitios.json el campo se llame 'media_url'
+        const esVideo = sitio.media_url.toLowerCase().endsWith('.mp4');
+
+        if (esVideo) {
+            modalMedia.innerHTML = `
+                <video src="${sitio.media_url}" autoplay loop muted playsinline 
+                       style="width:100%; height:100%; object-fit:cover;">
+                </video>`;
+        } else {
+            modalMedia.innerHTML = `
+                <img src="${sitio.media_url}" alt="${sitio.nombre}" 
+                     style="width:100%; height:100%; object-fit:cover;">`;
+        }
+        
+        // 2. GENERACIÓN DE BOTONES
+        const btnInfo = `<a href="${sitio.info_url}" target="_blank" class="btn-info">Información</a>`;
+        const btnVideo = `<a href="${sitio.video_url}" target="_blank" class="btn-video">Video TikTok</a>`;
+        
+        // URL de Google Maps (simplificada para navegación)
         const googleMapsUrl = `https://www.google.com/maps/dir/?api=1&destination=${sitio.lat},${sitio.lon}`;
-        const btnRuta = `<a href="${googleMapsUrl}" target="_blank" class="btn btn-ruta">Cómo llegar</a>`;
+        const btnRuta = `<a href="${googleMapsUrl}" target="_blank" class="btn-ruta">Cómo llegar</a>`;
 
         // Insertar los botones en el modal
         modalContent.innerHTML = btnInfo + btnVideo + btnRuta;
