@@ -25,40 +25,29 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Función que genera el contenido del modal y lo muestra
     function mostrarModal(sitio) {
-        modalTitulo.textContent = sitio.nombre;
-        
-        // 1. REFERENCIA AL CONTENEDOR MULTIMEDIA
-        const modalMedia = document.getElementById('modal-media');
-        
-        // Verificamos si existe media_url y si es un video (.mp4) o una imagen
-        if (sitio.media_url) {
-            const esVideo = sitio.media_url.toLowerCase().endsWith('.mp4');
-            if (esVideo) {
-                modalMedia.innerHTML = `
-                    <video src="${sitio.media_url}" autoplay loop muted playsinline 
-                           style="width:100%; height:100%; object-fit:cover;">
-                    </video>`;
-            } else {
-                modalMedia.innerHTML = `
-                    <img src="${sitio.media_url}" alt="${sitio.nombre}" 
-                         style="width:100%; height:100%; object-fit:cover;">`;
-            }
-        }
-        
-        // 2. GENERACIÓN DE BOTONES
-        const btnInfo = `<a href="${sitio.info_url}" target="_blank" class="btn-info">ℹ️ Información</a>`;
-        const btnVideo = `<a href="${sitio.video_url}" target="_blank" class="btn-video">🎥 Video TikTok</a>`;
-        
-        // URL corregida para Google Maps Navigation
-        const googleMapsUrl = `https://www.google.com/maps/dir/?api=1&destination=${sitio.lat},${sitio.lon}`;
-        const btnRuta = `<a href="${googleMapsUrl}" target="_blank" class="btn-ruta">📍 Cómo llegar</a>`;
-
-        // Insertar los botones en el contenedor del modal
-        modalContent.innerHTML = btnInfo + btnVideo + btnRuta;
-
-        // Mostrar el modal con flex para que se centre
-        modal.style.display = 'flex';
+    modalTitulo.textContent = sitio.nombre;
+    const modalMedia = document.getElementById('modal-media');
+    
+    // Limpiar y cargar multimedia
+    if (sitio.media_url) {
+        const esVideo = sitio.media_url.toLowerCase().endsWith('.mp4');
+        modalMedia.innerHTML = esVideo 
+            ? `<video src="${sitio.media_url}" autoplay loop muted playsinline style="width:100%;height:100%;object-fit:cover;"></video>`
+            : `<img src="${sitio.media_url}" alt="${sitio.nombre}" style="width:100%;height:100%;object-fit:cover;">`;
     }
+
+    // BOTONES CORREGIDOS: Asegúrate de usar las comillas backticks ( ` )
+    // La URL de Google Maps debe ser exactamente así:
+    const googleMapsUrl = `https://www.google.com/maps/dir/?api=1&destination=${sitio.lat},${sitio.lon}`;
+
+    modalContent.innerHTML = `
+        <a href="${sitio.info_url}" target="_blank" class="btn-info">ℹ️ Información</a>
+        <a href="${sitio.video_url}" target="_blank" class="btn-video">🎥 Video TikTok</a>
+        <a href="${googleMapsUrl}" target="_blank" class="btn-ruta">📍 Cómo llegar</a>
+    `;
+
+    modal.style.display = 'flex';
+}
 
     // --- 4. FUNCIONES DE CONTROL DE VIDEO/AUDIO ---
 
