@@ -12,7 +12,7 @@ body {
 }
 
 .mapa-container {
-    position: fixed;
+    position: relative;
     width: 100vw; /* Ocupa el 100% del ancho de la pantalla */
     height: 100vh;
     top: 0;
