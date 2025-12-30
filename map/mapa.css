@@ -12,12 +12,11 @@ body {
 }
 
 .mapa-container {
+    position: fixed;
     width: 100vw; /* Ocupa el 100% del ancho de la pantalla */
     height: 100vh;
-    margin: 0;
-    padding: 0;/* Quitamos el margen de 20px auto que tenías */
-    object-fit: fill;
-    overflow: hidden;
+    top: 0;
+    left: 0;/* Quitamos el margen de 20px auto que tenías */
     border: none;
 }
 .mapa-container img {
