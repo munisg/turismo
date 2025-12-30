@@ -34,59 +34,98 @@ body {
     
 }
 
-/* --- Estilos del Modal (Subventana) --- */
+/* --- Estilos del Modal (Subventana mejorada) --- */
 .modal {
-    display: none; /* Oculto por defecto */
+    display: none; 
     position: fixed; 
-    z-index: 10; 
+    z-index: 10001; /* Un número alto para que nada lo tape */
     left: 0;
     top: 0;
     width: 100%; 
     height: 100%; 
-    overflow: auto; 
-    background-color: rgba(0,0,0,0.4); /* Fondo semi-transparente */
-    justify-content: center; /* Centrar horizontalmente */
-    align-items: center; /* Centrar verticalmente */
+    background-color: rgba(0,0,0,0.7); /* Fondo exterior más oscuro para resaltar la ventana */
+    display: none; /* Se activa con JS */
+    justify-content: center; 
+    align-items: center; 
 }
 
 .modal-content {
-    background-color: #fff;
-    padding: 30px;
-    border-radius: 8px;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
-    width: 90%; 
-    max-width: 400px;
+    /* DEGRADADO: Verde claro arriba hacia verde medio abajo */
+    background: linear-gradient(180deg, #e8f5e9 0%, #c8e6c9 40%, #81c784 100%);
+    
+    padding: 0; /* Quitamos padding para que el video toque los bordes */
+    border-radius: 20px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.4);
+    width: 85%; 
+    max-width: 380px;
     text-align: center;
+    overflow: hidden; /* Importante para que el video respete las esquinas redondeadas */
+    border: 1px solid rgba(255,255,255,0.3);
+}
+
+/* El rectángulo para el video o imagen */
+.modal-media-container {
+    width: 100%;
+    height: 180px; /* Formato rectangular */
+    background-color: #000;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-bottom: 3px solid #4caf50; /* Línea verde que divide */
+}
+
+.modal-media-container img, 
+.modal-media-container video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Hace que el contenido llene el rectángulo sin estirarse feo */
+}
+
+#modal-titulo {
+    margin: 15px 0 5px 0;
+    font-size: 1.4em;
+    color: #1b5e20; /* Verde muy oscuro para que se lea bien */
+    font-weight: bold;
 }
 
 .cerrar-modal {
-    color: #aaa;
-    float: right;
-    font-size: 28px;
+    color: #fff;
+    position: absolute;
+    right: 15px;
+    top: 10px;
+    font-size: 35px;
     font-weight: bold;
     cursor: pointer;
+    z-index: 10002;
+    text-shadow: 0 2px 4px rgba(0,0,0,0.5);
 }
 
-.cerrar-modal:hover,
-.cerrar-modal:focus {
-    color: #000;
-    text-decoration: none;
+.botones-opciones {
+    padding: 15px; /* Espacio interno solo para los botones */
 }
 
 .botones-opciones a {
     display: block;
     margin: 10px 0;
-    padding: 10px;
+    padding: 12px;
     text-decoration: none;
     color: white;
-    border-radius: 5px;
+    border-radius: 10px;
     font-weight: bold;
+    font-size: 0.9em;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    transition: transform 0.2s;
 }
 
-/* Estilos de botones */
-.btn-info { background-color: #007bff; }
-.btn-video { background-color: #ff0050; } /* Color de TikTok */
-.btn-ruta { background-color: #4285F4; } /* Color de Google */
+.botones-opciones a:active {
+    transform: scale(0.98); /* Efecto visual de clic */
+}
+
+/* Colores de botones actualizados para combinar con el verde */
+.btn-info { background-color: #2e7d32; } /* Verde bosque */
+.btn-video { background-color: #d81b60; } /* Rosa fuerte (TikTok) para que resalte */
+.btn-ruta { background-color: #1976d2; }  /* Azul Maps */ /* Color de Google */
 
 /* --- ESTILOS DE PANTALLA DE BIENVENIDA --- */
 #bienvenida-video {
