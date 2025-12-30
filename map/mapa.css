@@ -17,7 +17,7 @@ body {
 .mapa-container {
     position: relative;
     width: 100vw; /* Ocupa el 100% del ancho de la pantalla */
-    /*height: 100vh;*/
+    /* height: 100vh; */
     top: 0;
     left: 0;/* Quitamos el margen de 20px auto que tenías */
     border: none;
@@ -25,7 +25,7 @@ body {
 .mapa-container img {
     width: 100%;
     height: auto;
-    /*object-fit: fill;*/
+    /* object-fit: fill; */
     margin: 0;
     padding: 0;
          /* Mantiene la proporción */
