@@ -17,6 +17,7 @@ body {
     margin: 0;    /* Quitamos el margen de 20px auto que tenías */
     position: relative;
     line-height: 0;
+    object-fit: fill;
     overflow: hidden;
 }
 .mapa-container img {
