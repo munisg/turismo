@@ -34,6 +34,7 @@
     "video_url": "https://www.tiktok.com/@anthonyhuanca07/video/7488940089402297605?is_from_webapp=1&sender_device=pc",
     "lat": -13.5297164,
     "lon": -70.4306751
+  },
   {
     "id": 5,
     "nombre": "Mirador Huayna Urqu",
@@ -52,7 +53,7 @@
     "lat": -13.4305017,
     "lon": -70.3817963
   },
-    {
+  {
     "id": 7,
     "nombre": "Templo de Icaco",
     "info_url": "https://www.gob.pe/munisangaban",
@@ -87,5 +88,5 @@
     "video_url": "https://www.tiktok.com/@muni_sangaban/video/7481448246926183686",
     "lat": -13.243897,
     "lon": -70.3487535
-  },
+  }
 ]
