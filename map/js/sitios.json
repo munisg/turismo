@@ -29,7 +29,7 @@
   {
     "id": 4,
     "nombre": "Mirador Sangari",
-    "info_url": "",
+    "info_url": "https://www.gob.pe/munisangaban",
     "media_url": "img/4.jpg",
     "video_url": "https://www.tiktok.com/@anthonyhuanca07/video/7488940089402297605?is_from_webapp=1&sender_device=pc",
     "lat": -13.5297164,
@@ -55,7 +55,7 @@
     {
     "id": 7,
     "nombre": "Templo de Icaco",
-    "info_url": "",
+    "info_url": "https://www.gob.pe/munisangaban",
     "media_url": "img/7.jpg",
     "video_url": "https://www.tiktok.com/@muni_sangaban/video/7589787233553616149",
     "lat": -13.7232089,
